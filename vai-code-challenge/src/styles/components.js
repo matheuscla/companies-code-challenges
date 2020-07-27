@@ -41,7 +41,7 @@ export const Button = styled.button`
 `
 
 export const Logo = styled.img`
-  width: 200px;
+  width: ${({small}) => small ? '80px' : '200px'};
   object-fit: cover;
   margin-bottom: ${({bottom}) => `${bottom}px` || '0'};
 `
