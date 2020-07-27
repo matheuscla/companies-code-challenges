@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchUsers } from '../../store/ducks/users';
 
 import Header from '../../components/Header';
 import UserCard from '../../components/UserCard';
@@ -8,6 +11,13 @@ import { Container } from './styles';
 import { Row, Col } from 'react-grid-system';
 
 function DashboardPage() {
+  const dispatch = useDispatch();
+  const users = useSelector(state => state.users.list);
+  
+  useEffect(() => {
+    dispatch(fetchUsers());
+  },[]);
+
   return(
     <>
       <Header />
@@ -18,18 +28,11 @@ function DashboardPage() {
         </Col>
         <Col sm={9}>
           <Row>
-            <Col sm={3} xxl={2}>
-              <UserCard />
-            </Col>
-            <Col sm={3} xxl={2}>
-              <UserCard />
-            </Col>
-            <Col sm={3} xxl={2}>
-              <UserCard />
-            </Col>
-            <Col sm={3} xxl={2}>
-              <UserCard />
-            </Col>
+            {users && users.map((user, index) => (
+              <Col sm={3} xxl={2} key={index}>
+                <UserCard user={user} />
+              </Col>
+            ))}
           </Row>
         </Col>
         </Row>

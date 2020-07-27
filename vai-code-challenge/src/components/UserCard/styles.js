@@ -27,4 +27,8 @@ export const Divider = styled.hr`
 `
 
 export const Label = styled.p`
+width: 160px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 `
