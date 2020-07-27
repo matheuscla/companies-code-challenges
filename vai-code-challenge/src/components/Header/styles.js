@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
   background: #18181B;
-  padding: 12px 18px;
+  padding: 12px 30px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;

@@ -3,19 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: #1A1B22;
   border-radius: 4px;
-  width: 254px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-
-  &:hover {
-    margin-top: -10px;
-    transition: all 0.4s linear;
-  }
+  margin-bottom: 30px;
 `
 
 export const Avatar = styled.img`
   width: 100%;
-  height: 144px;
   object-fit: cover;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
