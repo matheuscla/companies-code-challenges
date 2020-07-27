@@ -9,7 +9,23 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 24px;
   display: block;
-  width: 360px;
+  width: ${({fullSize}) =>  fullSize ? '100%' : '360px'};
+
+  &:focus {
+    border-color: #fff;
+  }
+`
+
+export const Select = styled.select`
+  border-radius: 2px;
+  background: #15161b;
+  border: 1px solid #21222A;
+  padding: 8px 16px;
+  color: #999AA5;
+  font-size: 14px;
+  line-height: 24px;
+  display: block;
+  width: ${({fullSize}) =>  fullSize ? '100%' : '360px'};
 
   &:focus {
     border-color: #fff;
@@ -38,6 +54,7 @@ export const Button = styled.button`
   font-weight: bold;
   text-transform: uppercase;
   width: ${({fullSize}) => fullSize ? '100%' : 'auto'};
+  margin-top: ${({top}) => top ? `${top}px` : '0'};
 `
 
 export const Logo = styled.img`
