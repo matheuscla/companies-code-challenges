@@ -7,6 +7,7 @@ import { fetchUser } from '../../store/ducks/users';
 
 import Header from '../../components/Header';
 import UserInfo from '../../components/UserInfo';
+import UserLocation from '../../components/UserLocation';
 
 import { Container } from './styles';
 import { Avatar } from '../../styles/components';
@@ -32,6 +33,8 @@ function UserProfilePage() {
             <UserInfo />
           </Col>
         </Row>
+
+        <UserLocation top={15} />
       </Container>
     </>
   );
