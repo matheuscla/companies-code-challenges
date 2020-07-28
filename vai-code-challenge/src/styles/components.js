@@ -62,3 +62,10 @@ export const Logo = styled.img`
   object-fit: cover;
   margin-bottom: ${({bottom}) => `${bottom}px` || '0'};
 `
+
+export const Avatar = styled.img`
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+`
