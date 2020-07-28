@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import UserCard from '../../components/UserCard';
 import Filters from '../../components/Filters';
 
-import { Container } from './styles';
+import { Container, Link } from './styles';
 import { Row, Col } from 'react-grid-system';
 
 function DashboardPage() {
@@ -30,7 +30,9 @@ function DashboardPage() {
           <Row>
             {users && users.map((user, index) => (
               <Col sm={3} xxl={2} key={index}>
-                <UserCard user={user} />
+                <Link to={`/users/${user?.login?.uuid}`}>
+                  <UserCard user={user} />
+                </Link>
               </Col>
             ))}
           </Row>
