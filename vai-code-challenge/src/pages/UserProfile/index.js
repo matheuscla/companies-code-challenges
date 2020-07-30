@@ -5,7 +5,6 @@ import { Row, Col } from 'react-grid-system';
 
 import { fetchUser } from '../../store/ducks/users';
 
-import Header from '../../components/Header';
 import UserInfo from '../../components/UserInfo';
 import UserLocation from '../../components/UserLocation';
 
@@ -22,21 +21,18 @@ function UserProfilePage() {
   }, [id]);
 
   return(
-    <>
-      <Header />
-      <Container>
-        <Row>
-          <Col md={3}>
-            <Avatar src={user?.picture?.large} />
-          </Col>
-          <Col md={9}>
-            <UserInfo user={user} />
-          </Col>
-        </Row>
+    <Container>
+      <Row>
+        <Col md={3}>
+          <Avatar src={user?.picture?.large} />
+        </Col>
+        <Col md={9}>
+          <UserInfo user={user} />
+        </Col>
+      </Row>
 
-        <UserLocation user={user} top={15} />
-      </Container>
-    </>
+      <UserLocation user={user} top={15} />
+    </Container>
   );
 }
 

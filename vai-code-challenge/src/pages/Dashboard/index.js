@@ -5,7 +5,6 @@ import { Row, Col } from 'react-grid-system';
 
 import { fetchUsers, removeUser } from '../../store/ducks/users';
 
-import Header from '../../components/Header';
 import UserCard from '../../components/UserCard';
 import Filters from '../../components/Filters';
 
@@ -20,32 +19,29 @@ function DashboardPage() {
   },[]);
 
   return(
-    <>
-      <Header />
-      <Container>
+    <Container>
+      <Row>
+      <Col sm={3}>
+        <Filters />
+      </Col>
+      <Col sm={9}>
         <Row>
-        <Col sm={3}>
-          <Filters />
-        </Col>
-        <Col sm={9}>
-          <Row>
-            {users && users.map((user, index) => (
-              <Col sm={3} xxl={2} key={index}>
-                <CardContainer>
-                  <RemoveIcon onClick={() => dispatch(removeUser(user.login.uuid))}>
-                    <BsFillTrash2Fill />
-                  </RemoveIcon>
-                  <Link to={`/users/${user?.login?.uuid}`}>
-                    <UserCard user={user} />
-                  </Link>
-                </CardContainer>
-              </Col>
-            ))}
-          </Row>
-        </Col>
+          {users && users.map((user, index) => (
+            <Col sm={3} xxl={2} key={index}>
+              <CardContainer>
+                <RemoveIcon onClick={() => dispatch(removeUser(user.login.uuid))}>
+                  <BsFillTrash2Fill />
+                </RemoveIcon>
+                <Link to={`/users/${user?.login?.uuid}`}>
+                  <UserCard user={user} />
+                </Link>
+              </CardContainer>
+            </Col>
+          ))}
         </Row>
-      </Container>
-    </>
+      </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -5,13 +5,16 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 
+import PrivateRoute from './components/PrivateRoute';
+
 const Routes = () => {
   return(
     <BrowserRouter>
       <Switch>
         <Route exact path='/login' component={Login} />
-        <Route exact path='/users/:id' component={UserProfile} />
-        <Route exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/' component={Dashboard} />
+        <PrivateRoute exact path='/users/:id' component={UserProfile} />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
       </Switch>
     </BrowserRouter>
   );
