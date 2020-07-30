@@ -1,40 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Row, Col } from 'react-grid-system';
 
-import { Container, Label, Title, Divider } from './styles';
+import EditUserForm from '../EditUserForm';
 
-function UserInfo() {
+import { Container, Label, Title, Divider, Header, EditBtn } from './styles';
+
+function UserInfo({ user }) {
+  const [editVisible, setEditVisible] = useState(false);
+
   return(
     <Container>
-      <Title>User Info</Title>
+      <Header>
+        <Title>User Info</Title>
+        {!editVisible && <EditBtn onClick={() => setEditVisible(!editVisible)}>Edit user</EditBtn>}
+      </Header>
       <Divider />
-      <Row>
-        <Col sm={6}>
-          <Label>
-            <strong>Name:</strong> dasdsadsa
-          </Label>
-          <Label>
-            <strong>Email:</strong> dasdsadsa
-          </Label>
-          <Label>
-            <strong>Phone:</strong> dasdsadsa
-          </Label>
-          <Label>
-            <strong>Birthday:</strong> dasdsadsa
-          </Label>
-        </Col>
-        <Col sm={6}>
-          <Label>
-            <strong>Age:</strong> dasdsadsa
-          </Label>
-          <Label>
-            <strong>Gender:</strong> dasdsadsa
-          </Label>
-          <Label>
-            <strong>Nationality:</strong> dasdsadsa
-          </Label>
-        </Col>
-      </Row>
+
+      {editVisible ? <EditUserForm editVisible={editVisible} hideVisible={() => setEditVisible(false)} /> : (
+        <>
+          <Row>
+            <Col sm={6}>
+              <Label>
+                <strong>Name:</strong> {`${user?.name?.first} ${user?.name?.last}`}
+              </Label>
+              <Label>
+                <strong>Email:</strong> {user?.email}
+              </Label>
+              <Label>
+                <strong>Phone:</strong> {user?.phone}
+              </Label>
+              <Label>
+                <strong>Birthday:</strong> {user?.dob?.date}
+              </Label>
+            </Col>
+            <Col sm={6}>
+              <Label>
+                <strong>Age:</strong> {user?.dob?.age}
+              </Label>
+              <Label>
+                <strong>Gender:</strong> {user?.gender}
+              </Label>
+              <Label>
+                <strong>Nationality:</strong> {user?.nat}
+              </Label>
+            </Col>
+          </Row>
+        </>
+      ) }
     </Container>
   );
 }

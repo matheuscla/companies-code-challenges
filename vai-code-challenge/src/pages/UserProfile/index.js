@@ -27,14 +27,14 @@ function UserProfilePage() {
       <Container>
         <Row>
           <Col md={3}>
-            <Avatar src={'https://randomuser.me/api/portraits/women/24.jpg'} />
+            <Avatar src={user?.picture?.large} />
           </Col>
           <Col md={9}>
-            <UserInfo />
+            <UserInfo user={user} />
           </Col>
         </Row>
 
-        <UserLocation top={15} />
+        <UserLocation user={user} top={15} />
       </Container>
     </>
   );
