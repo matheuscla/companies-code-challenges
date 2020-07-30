@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Row, Col } from 'react-grid-system';
 
 import EditUserForm from '../EditUserForm';

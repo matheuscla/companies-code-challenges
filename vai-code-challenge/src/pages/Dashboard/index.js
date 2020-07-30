@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { BsFillTrash2Fill } from 'react-icons/bs';
+import { Row, Col } from 'react-grid-system';
 
-import { fetchUsers } from '../../store/ducks/users';
+import { fetchUsers, removeUser } from '../../store/ducks/users';
 
 import Header from '../../components/Header';
 import UserCard from '../../components/UserCard';
 import Filters from '../../components/Filters';
 
-import { Container, Link } from './styles';
-import { Row, Col } from 'react-grid-system';
+import { Container, Link, RemoveIcon, CardContainer } from './styles';
 
 function DashboardPage() {
   const dispatch = useDispatch();
@@ -30,9 +31,14 @@ function DashboardPage() {
           <Row>
             {users && users.map((user, index) => (
               <Col sm={3} xxl={2} key={index}>
-                <Link to={`/users/${user?.login?.uuid}`}>
-                  <UserCard user={user} />
-                </Link>
+                <CardContainer>
+                  <RemoveIcon onClick={() => dispatch(removeUser(user.login.uuid))}>
+                    <BsFillTrash2Fill />
+                  </RemoveIcon>
+                  <Link to={`/users/${user?.login?.uuid}`}>
+                    <UserCard user={user} />
+                  </Link>
+                </CardContainer>
               </Col>
             ))}
           </Row>

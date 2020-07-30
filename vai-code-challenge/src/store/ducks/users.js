@@ -4,7 +4,8 @@ import axios from 'axios';
 const Types = {
   FETCH_USERS: 'FETCH_USERS',
   FETCH_USER: 'FETCH_USER',
-  EDIT_USER: 'EDIT_USER'
+  EDIT_USER: 'EDIT_USER',
+  REMOVE_USER: 'REMOVE_USER'
 }
 
 export const fetchUsers = () => async (dispatch) => {
@@ -15,6 +16,10 @@ export const fetchUsers = () => async (dispatch) => {
   } catch(e) {
     console.log(e);
   }
+}
+
+export const removeUser = id => dispatch => {
+  return dispatch({ type: Types.REMOVE_USER, payload: id });
 }
 
 export const fetchUser = (id) => dispatch => {
@@ -43,7 +48,12 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         selectedUser: { ...state.selectedUser, ...action.payload }
-      }
+      };
+    case Types.REMOVE_USER:
+      return {
+        ...state,
+        list: state.list.filter(user => user.login.uuid !== action.payload)
+      };
     default:
       return state; 
   }
