@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Types
-const Types = {
+export const Types = {
   FETCH_USERS: 'FETCH_USERS',
   FETCH_USER: 'FETCH_USER',
   EDIT_USER: 'EDIT_USER',
@@ -9,11 +9,13 @@ const Types = {
   SET_LOADING: 'SET_LOADING'
 }
 
-export const fetchUsers = () => async (dispatch) => {
+export const fetchUsers = () => async (dispatch, getState) => {
   dispatch({ type: Types.SET_LOADING, payload: true });
 
+  const nat = getState().languages.selected;
+
   try {
-    const { data } = await axios.get('https://randomuser.me/api/?results=16');
+    const { data } = await axios.get(`https://randomuser.me/api/?results=16&nat=${nat}`);
 
     return dispatch({ type: Types.FETCH_USERS, payload: data.results });
   } catch(e) {
