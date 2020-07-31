@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { login } from '../../store/ducks/auth';
 
 import { Container, FormContainer } from './styles';
 import { Input, Label, InputGroup, Button, Logo } from '../../styles/components';
 
-function LoginPage() {
+function LoginPage({ history }) {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({ username: '', password: ''});
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
+    try {
+      dispatch(login());
+
+      history.push('/dashboard');
+    } catch(e) {
+      console.error('Error', e);
+    }
   }
 
   return(
@@ -19,6 +31,7 @@ function LoginPage() {
           <Input
             id='username'
             name='username'
+            required
             value={values.username}
             onChange={e => setValues({ ...values, username: e.target.value })}
           />
@@ -30,6 +43,7 @@ function LoginPage() {
             type='password'
             id='password'
             name='password'
+            required
             value={values.password}
             onChange={e => setValues({ ...values, password: e.target.value })}
           />

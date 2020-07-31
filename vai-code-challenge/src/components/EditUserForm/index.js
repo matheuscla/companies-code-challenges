@@ -27,7 +27,7 @@ function EditUserForm({ hideVisible }) {
       name: { first: values.name, last: user?.name?.last },
       email: values.email,
       phone: values.phone,
-      age: { dob: { age: values.age }},
+      dob: { age: values.age },
       gender: values.gender,
       nat: values.nat
     }
