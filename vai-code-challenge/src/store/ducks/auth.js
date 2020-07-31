@@ -1,4 +1,4 @@
-const Types = {
+export const Types = {
   LOGOUT: 'LOGOUT',
   LOGIN: 'LOGIN'
 }
@@ -12,7 +12,7 @@ export const login = () => dispatch => {
 }
 
 const INITITAL_STATE = {
-  logged: true
+  logged: false
 }
 
 export default function(state=INITITAL_STATE, action) {
