@@ -23,25 +23,18 @@ function DashboardPage() {
     <Container>
       {loading ? <Loading /> : (
         <Row>
-          <Col sm={3}>
-            <Filters />
-          </Col>
-          <Col sm={9}>
-            <Row>
-              {users && users.map((user, index) => (
-                <Col sm={3} xxl={2} key={index}>
-                  <CardContainer>
-                    <RemoveIcon onClick={() => dispatch(removeUser(user.login.uuid))}>
-                      <BsFillTrash2Fill />
-                    </RemoveIcon>
-                    <Link to={`/users/${user?.login?.uuid}`}>
-                      <UserCard user={user} />
-                    </Link>
-                  </CardContainer>
-                </Col>
-              ))}
-            </Row>
-          </Col>
+          {users && users.map((user, index) => (
+            <Col sm={3} xxl={2} key={index}>
+              <CardContainer>
+                <RemoveIcon onClick={() => dispatch(removeUser(user.login.uuid))}>
+                  <BsFillTrash2Fill />
+                </RemoveIcon>
+                <Link to={`/users/${user?.login?.uuid}`}>
+                  <UserCard user={user} />
+                </Link>
+              </CardContainer>
+            </Col>
+          ))}
         </Row>
       )}
     </Container>
