@@ -8,7 +8,7 @@ import { fetchUser } from '../../store/ducks/users';
 import UserInfo from '../../components/UserInfo';
 import UserLocation from '../../components/UserLocation';
 
-import { Container } from './styles';
+import { Container, EmptyUser } from './styles';
 import { Avatar } from '../../styles/components';
 
 function UserProfilePage() {
@@ -22,16 +22,20 @@ function UserProfilePage() {
 
   return(
     <Container>
-      <Row>
-        <Col md={3}>
-          <Avatar src={user?.picture?.large} />
-        </Col>
-        <Col md={9}>
-          <UserInfo user={user} />
-        </Col>
-      </Row>
+      {user ? (
+        <>
+          <Row>
+          <Col md={3}>
+            <Avatar src={user?.picture?.large} />
+          </Col>
+          <Col md={9}>
+            <UserInfo user={user} />
+          </Col>
+          </Row>
 
-      <UserLocation user={user} top={15} />
+          <UserLocation user={user} top={15} />
+        </>
+      ): <EmptyUser>This user does not exist :(</EmptyUser>}
     </Container>
   );
 }

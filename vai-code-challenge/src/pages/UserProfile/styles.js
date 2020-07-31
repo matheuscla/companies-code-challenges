@@ -5,3 +5,7 @@ export const Container = styled.div`
   max-width: 1400px;
   margin: 0 auto;
 `
+
+export const EmptyUser = styled.h1`
+  text-align: center;
+`
