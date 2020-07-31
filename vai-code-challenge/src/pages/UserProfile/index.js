@@ -18,7 +18,7 @@ function UserProfilePage() {
 
   useEffect(() => {
     dispatch(fetchUser(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   return(
     <Container>

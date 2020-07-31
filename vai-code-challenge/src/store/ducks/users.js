@@ -5,16 +5,21 @@ const Types = {
   FETCH_USERS: 'FETCH_USERS',
   FETCH_USER: 'FETCH_USER',
   EDIT_USER: 'EDIT_USER',
-  REMOVE_USER: 'REMOVE_USER'
+  REMOVE_USER: 'REMOVE_USER',
+  SET_LOADING: 'SET_LOADING'
 }
 
 export const fetchUsers = () => async (dispatch) => {
+  dispatch({ type: Types.SET_LOADING, payload: true });
+
   try {
     const { data } = await axios.get('https://randomuser.me/api/?results=16');
 
     return dispatch({ type: Types.FETCH_USERS, payload: data.results });
   } catch(e) {
     console.log(e);
+  } finally {
+    dispatch({ type: Types.SET_LOADING, payload: false });
   }
 }
 
@@ -32,7 +37,8 @@ export const editUser = user => dispatch => {
 
 const INITIAL_STATE = {
   list: [],
-  selectedUser: null
+  selectedUser: null,
+  loading: true
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -54,6 +60,11 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         list: state.list.filter(user => user.login.uuid !== action.payload)
       };
+    case Types.SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }  
     default:
       return state; 
   }

@@ -1,5 +1,5 @@
 const INITITAL_STATE = {
-  logged: false
+  logged: true
 }
 
 export default function(state=INITITAL_STATE, action) {
