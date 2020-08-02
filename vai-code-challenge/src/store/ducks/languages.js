@@ -1,7 +1,7 @@
 import { fetchUsers } from './users';
 
-const Types = {
-  'SET_LANGUAGE': 'SET_LANGUAGE'
+export const Types = {
+  SET_LANGUAGE: 'SET_LANGUAGE'
 }
 
 export const setLanguage = language => async (dispatch) => {

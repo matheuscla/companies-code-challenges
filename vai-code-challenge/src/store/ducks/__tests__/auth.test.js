@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import fetchMock from 'fetch-mock';
 
 import authReducer, { logout, login, Types } from '../auth';
 
@@ -8,10 +7,6 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('Auth actions', () => {
-  afterEach(() => {
-    fetchMock.restore()
-  });
-
   it('should create an action to login the user', () => {
     const expectedAction = {
       type: Types.LOGIN
