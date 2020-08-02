@@ -139,4 +139,13 @@ describe('Users reducer', () => {
         selectedUser: { name: 'User2', email: 'user2@example.com'}
       });
   });
+
+  it('should handle Types.SET_LOADING', () => {
+    expect(usersReducer(undefined, { type: Types.SET_LOADING, payload: false }))
+      .toEqual({
+        list: [],
+        selectedUser: null,
+        loading: false
+      });
+  })
 });

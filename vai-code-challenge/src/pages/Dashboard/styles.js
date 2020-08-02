@@ -27,3 +27,7 @@ export const RemoveIcon = styled.div`
 export const CardContainer = styled.div`
   position: relative;
 `
+
+export const LoadMore = styled.div`
+  text-align: center;
+`
