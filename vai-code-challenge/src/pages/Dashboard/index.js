@@ -6,7 +6,6 @@ import { Row, Col } from 'react-grid-system';
 import { fetchUsers, removeUser } from '../../store/ducks/users';
 
 import UserCard from '../../components/UserCard';
-import Filters from '../../components/Filters';
 import Loading from '../../components/Loading';
 
 import { Container, Link, RemoveIcon, CardContainer } from './styles';
