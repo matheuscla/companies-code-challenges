@@ -36,6 +36,7 @@ function LoginPage({ history }) {
         <InputGroup>
           <Label htmlFor='username'>Username:</Label>
           <Input
+            data-cy="username"
             id='username'
             name='username'
             required
@@ -47,6 +48,7 @@ function LoginPage({ history }) {
         <InputGroup lastItem>
           <Label htmlFor='password'>Password:</Label>
           <Input
+            data-cy="password"
             type='password'
             id='password'
             name='password'
@@ -56,7 +58,7 @@ function LoginPage({ history }) {
           />
         </InputGroup>
 
-        <Button fullSize>Login</Button>
+        <Button data-cy="submit" fullSize>Login</Button>
       </FormContainer>
     </Container>
   )
