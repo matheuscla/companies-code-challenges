@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { login } from '../../store/ducks/auth';
 
@@ -8,7 +8,14 @@ import { Input, Label, InputGroup, Button, Logo } from '../../styles/components'
 
 function LoginPage({ history }) {
   const dispatch = useDispatch();
+  const { logged } = useSelector(state => state.auth);
   const [values, setValues] = useState({ username: '', password: ''});
+
+  useEffect(() => {
+    if (logged) {
+      return history.push('/dashboard');
+    }
+  },[]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
